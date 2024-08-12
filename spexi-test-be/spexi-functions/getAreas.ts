@@ -18,21 +18,21 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
         console.log('EVENT: \n' + JSON.stringify(event, null, 2));
 
         const username = event?.headers?.['username'];
-        console.log('🚀 ~ file: getPostings.ts ~ line 22 ~ lambdaHandler ~ username', username);
+        console.log('🚀 ~ file: getAreas.ts ~ line 22 ~ lambdaHandler ~ username', username);
 
         let query = db.selectFrom('areas').selectAll();
 
         if (username) {
             query = query.select([
-                sql<string>`CASE WHEN EXISTS (SELECT 1 FROM bookmarks WHERE bookmarks.area_id = postings.id AND bookmarks.username = ${username}) THEN TRUE ELSE FALSE END`.as(
+                sql<string>`CASE WHEN EXISTS (SELECT 1 FROM bookmarks WHERE bookmarks.area_id = areas.id AND bookmarks.username = ${username}) THEN TRUE ELSE FALSE END`.as(
                     'is_bookmarked',
                 ),
             ]);
         }
 
-        const postingsRaw = await query.limit(10).execute();
+        const scoutingAreasRaw = await query.limit(10).execute();
 
-        let areas = objectToCamel(postingsRaw);
+        let areas = objectToCamel(scoutingAreasRaw);
 
         areas = areas.map((p) => {
             p.isBookmarked = p.isBookmarked === 1;

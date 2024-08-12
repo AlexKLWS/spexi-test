@@ -25,7 +25,7 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
             .insertInto('bookmarks')
             .values({
                 username,
-                posting_id: body.postingId,
+                area_id: body.areaId,
             })
             .executeTakeFirst();
 

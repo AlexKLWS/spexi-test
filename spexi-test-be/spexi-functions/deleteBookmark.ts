@@ -24,7 +24,7 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
         await db
             .deleteFrom('bookmarks')
             .where('bookmarks.username', '=', username)
-            .where('bookmarks.posting_id', '=', body.postingId)
+            .where('bookmarks.area_id', '=', body.areaId)
             .execute();
 
         return {
