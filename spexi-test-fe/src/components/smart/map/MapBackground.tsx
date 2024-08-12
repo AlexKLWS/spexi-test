@@ -22,7 +22,7 @@ const MapBackground = (props: Props) => {
       if (mapRef.current) {
         mapRef.current.resize();
       }
-    }, 100);
+    }, 150);
   }, [props.areas]);
 
   return (
@@ -30,7 +30,7 @@ const MapBackground = (props: Props) => {
       <Map
         ref={mapRef}
         antialias
-        maxPitch={85}
+        maxPitch={60}
         initialViewState={{
           latitude: props.areas[0].latitude,
           longitude: props.areas[0].longitude,
