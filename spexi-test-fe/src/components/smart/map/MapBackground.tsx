@@ -5,6 +5,9 @@ import { Canvas } from "react-three-map/maplibre";
 import { ScoutingArea } from "@/types/ScoutingArea";
 import MapView from "./MapView";
 
+import "maplibre-gl/dist/maplibre-gl.css";
+import { useEffect, useRef } from "react";
+
 type Props = {
   areas: ScoutingArea[];
   selectedArea: ScoutingArea;
@@ -12,10 +15,22 @@ type Props = {
 };
 
 const MapBackground = (props: Props) => {
+  const mapRef = useRef<any>(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (mapRef.current) {
+        mapRef.current.resize();
+      }
+    }, 100);
+  }, [props.areas]);
+
   return (
-    <div className="absolute top-0 right-0 left-0 bottom-0 pointer-events-auto -z-10">
+    <div className="h-[100vh] w-full top-0 bottom-0 left-0 right-0 pointer-events-auto absolute">
       <Map
+        ref={mapRef}
         antialias
+        maxPitch={85}
         initialViewState={{
           latitude: props.areas[0].latitude,
           longitude: props.areas[0].longitude,
