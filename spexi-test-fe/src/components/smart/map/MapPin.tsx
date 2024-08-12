@@ -1,11 +1,9 @@
 "use client";
 
-import { ContactShadows, MeshTransmissionMaterial } from "@react-three/drei";
 import * as THREE from "three";
 import { useLoader } from "@react-three/fiber";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
-import { useState } from "react";
-import { NearCoordinates, coordsToVector3 } from "react-three-map";
+import { NearCoordinates } from "react-three-map";
 
 const params = {
   color: "#94a3b8",

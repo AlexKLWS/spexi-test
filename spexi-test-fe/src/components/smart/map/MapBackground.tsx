@@ -1,11 +1,9 @@
 "use client";
 
 import Map from "react-map-gl/maplibre";
-import { Canvas, useMap } from "react-three-map/maplibre";
+import { Canvas } from "react-three-map/maplibre";
 import { ScoutingArea } from "@/types/ScoutingArea";
 import MapView from "./MapView";
-import { useContext } from "react";
-import { SelectedAreaContext } from "@/lib/context/SelectedAreaContext";
 
 type Props = {
   areas: ScoutingArea[];

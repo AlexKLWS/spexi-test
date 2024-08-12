@@ -1,10 +1,9 @@
-import { forwardRef, useEffect } from "react";
+import { forwardRef } from "react";
 import { MapPinIcon } from "lucide-react";
 
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
