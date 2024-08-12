@@ -21,7 +21,7 @@ const MapBackground = (props: Props) => {
         initialViewState={{
           latitude: props.areas[0].latitude,
           longitude: props.areas[0].longitude,
-          zoom: 14,
+          zoom: 15,
           pitch: 60,
         }}
         mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"

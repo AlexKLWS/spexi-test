@@ -8,7 +8,7 @@ import { useState } from "react";
 import { NearCoordinates, coordsToVector3 } from "react-three-map";
 
 const params = {
-  color: 0xf8fafc,
+  color: "#94a3b8",
   transmission: 1,
   opacity: 0.5,
   metalness: 0.1,
@@ -16,7 +16,7 @@ const params = {
   ior: 1.5,
   thickness: 0.01,
   specularIntensity: 1,
-  specularColor: 0xffffff,
+  specularColor: "#ffffff",
   envMapIntensity: 1,
   lightIntensity: 1,
   exposure: 1,
@@ -24,12 +24,12 @@ const params = {
 
 type Props = {
   handleClick?: () => void;
+  isSelected?: boolean;
   longitude: number;
   latitude: number;
 };
 
 const MapPin = (props: Props) => {
-  const [hovered, hover] = useState(false);
   const obj = useLoader(
     OBJLoader,
     "https://alexoregonpublicbucket.s3.us-west-2.amazonaws.com/map+pointer.obj"
@@ -38,15 +38,10 @@ const MapPin = (props: Props) => {
   return (
     <NearCoordinates latitude={props.latitude} longitude={props.longitude}>
       <primitive
-        onClick={() => {
-          props.handleClick?.();
-          hover(false);
-        }}
+        onClick={props.handleClick}
         object={obj.children[0].clone()}
         scale={28}
-        onPointerOver={() => hover(true)}
-        onPointerOut={() => hover(false)}
-        material-color={hovered ? "purple" : "orange"}
+        material-color={props.isSelected ? "#0000ff" : "#94a3b8"}
         material={
           new THREE.MeshPhysicalMaterial({
             color: params.color,
