@@ -1,13 +1,10 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { createRef, useEffect, useRef, useState } from "react";
 
 import { ScoutingAreaCard } from "@/components/smart/ScoutingAreaCard";
-import { Button } from "@/components/ui/button";
 import { ScoutingArea } from "@/types/ScoutingArea";
-import { SelectedAreaContext } from "@/lib/context/SelectedAreaContext";
 
 type Props = {
   areas: ScoutingArea[];
