@@ -22,7 +22,7 @@ const MapBackground = (props: Props) => {
       if (mapRef.current) {
         mapRef.current.resize();
       }
-    }, 150);
+    }, 300);
   }, [props.areas]);
 
   return (
